@@ -1,0 +1,49 @@
+contain_peace = {
+    # Determines when this peace AI is used by the AI (ROOT is taker, FROM is giver)
+    enable = {
+NOT = {
+			OR = {
+			any_country = {
+				is_in_peace_conference = yes
+				is_ai = no
+				#has_capitulated = no
+				#is_puppet = no
+				OR = {
+					is_in_faction_with = ROOT
+					has_war_together_with = ROOT				
+				}
+			}
+			any_enemy_country = {
+				is_in_peace_conference = yes
+				any_enemy_country = {
+					is_in_peace_conference = yes
+					is_ai = no
+				}
+			}
+		}
+		}
+        FROM = { has_country_flag = flag_fighting_for_independence }
+    }
+    
+    # Random factors applied to AI decision making when determining which
+    # peace option to use.
+    annex_randomness = 0
+    liberate_randomness = 0
+    puppet_randomness = 0
+    take_states_randomness = 0
+    force_government_randomness = 0
+    
+    # Weighting towards the option. (ROOT is taker, FROM is giver)
+    annex = {
+        factor = 0
+    }
+    liberate = {
+        factor = 0
+    }
+    puppet = {
+        factor = 1000
+    }
+    take_states = {
+        factor = 0
+    }
+}
